@@ -23,6 +23,10 @@ stylesheets = [
 
 app = dash.Dash(__name__, external_stylesheets=stylesheets)
 
+app.title = "Covid Dashboard"
+
+server = app.server
+
 bubbles_map = px.scatter_geo(
     data_frame=countries_df,
     locations="Country_Region",
@@ -165,7 +169,3 @@ def hello(value):
         labels={"value": "Cases", "variable": "Condition"},
     )
     return figure
-
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
